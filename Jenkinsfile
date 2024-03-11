@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'workstation' }
     environment {
-        NEWRELIC_API_KEY = credentials('ansible1')
+        NEWRELIC_API_KEY = credentials('ansible')
     }
     stages {
         stage('Foo') {
