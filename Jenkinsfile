@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    node { label 'workstation' }
-  }
+  agent { label 'workstation' }
     environment {
         NEWRELIC_API_KEY = credentials('ansible1')
     }
