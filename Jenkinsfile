@@ -9,8 +9,12 @@ pipeline {
 
    stages {
       stage('list env variables') {
+         environment {
+            USER_ID = 42
+         }
          steps {
              sh 'env'
+             echo "now the user id is ${USER_ID}"
          }
       }
       stage('access env variable') {
@@ -27,12 +31,15 @@ pipeline {
 
             script {
                env.USER_GROUP = "users"
+               env.USER_NAME = "joe"
             }
             sh 'echo current user group is $USER_GROUP'
+            echo "user name after overriding is ${USER_NAME}"
 
-            withEnv(["USER_PWD=secret", "USER_ID_ADMIN=false"]) {
+            withEnv(["USER_PWD=secret", "USER_ID_ADMIN=false", "USER_NAME=bob"]) {
                  echo "current user password is ${env.USER_PWD}"
                  sh 'echo current user is admin? $USER_ID_ADMIN'
+                 echo "user name after overriding in Env block ${USER_NAME}"
             }
 
           }
