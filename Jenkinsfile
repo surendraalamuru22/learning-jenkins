@@ -1,3 +1,6 @@
-@Library('roboshop') _
-
-test()
+node {
+    agent any
+    stage('test') {
+       sh 'echo hello world'
+    }
+}
