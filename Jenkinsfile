@@ -1,5 +1,3 @@
-node {
-    stage('test') {
-       sh 'echo "hello world"'
-    }
-}
+@Library('roboshop') _
+
+test()
